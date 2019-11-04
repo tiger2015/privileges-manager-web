@@ -36,9 +36,17 @@ export default {
       let config = {
         emulateJSON: true
       }
+      var that = this
       this.$http.post(url, formData, config).then(function (response) {
         if (response.body.status === '400') {
           this.error = response.body.msg
+        } else {
+          this.$router.push({
+            name: 'index',
+            params: {
+              account: that.username
+            }
+          })
         }
       })
     }
