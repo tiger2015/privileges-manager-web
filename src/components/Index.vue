@@ -3,9 +3,8 @@
     <div id="head">
       <div id="userInfo">
         当前用户&nbsp;<span class="account">{{account}}</span>
-        <input id="accountId" style="display: none;" v-model="accountId" />
         &nbsp;&nbsp;
-        <input type="button" value="退出" id="logout">
+        <input type="button" value="退出" id="logout" v-on:click="logout"/>
       </div>
     </div>
     <div id="menu">
@@ -14,7 +13,7 @@
           <a href="#" target="iFrame">用户管理</a>
           <ul>
             <li><a href="#" target="iFrame">用户查询</a></li>
-            <li><a th:href="#">添加用户</a></li>
+            <li><a href="#">添加用户</a></li>
           </ul>
         </li>
         <li>
@@ -34,26 +33,37 @@
       </ul>
     </div>
     <div id="center">
+      <router-view></router-view>
     </div>
 </div>
 </template>
 <script>
+export const evidenceUrl = process.env.API_ROOT
 export default {
   name: 'index',
   data () {
     return {
-      account: '',
-      accountId: '',
+      account: sessionStorage.getItem('account'),
       permissions: ''
     }
   },
   methods: {
-    getParams () {
-      this.account = this.$router.params.account
+    logout: function () {
+      console.log('logout')
+      console.log(sessionStorage.getItem('accountId'))
+      this.$http.post(evidenceUrl + '/account/rest/logout',
+        {'accountId': sessionStorage.getItem('accountId')
+        },
+        {
+          emulateJSON: true
+        }).then(function (response) {
+        sessionStorage.removeItem('account')
+        sessionStorage.removeItem('accountId')
+        this.$router.push({
+          name: 'login'
+        })
+      })
     }
-  },
-  watch: {
-    '$router': 'getParams'
   }
 }
 </script>
@@ -63,7 +73,7 @@ export default {
     top: 0;
     width: 100%;
     margin: 1px;
-    height: 10%;
+    height: 100px;
     background-color: aqua;
   }
   #userInfo {
@@ -77,7 +87,7 @@ export default {
     left: 40%;
     top: 15%;
     width: 90%;
-    height: 85%;
+    height: 300px;
   }
   .account {
     font-size: 16px;
@@ -91,7 +101,7 @@ export default {
   #menu {
     position: absolute;
     left: 40%;
-    bottom: 1%;
+    top: 70px;
   }
   #menu > ul {
     background-color: #f1f1f1;

@@ -1,5 +1,4 @@
 <template>
-
     <form id="login" v-on:submit.prevent="onSubmit">
         <label id="title">登录</label>
         <input type="text" id="name" placeholder="username" v-model="username"/>
@@ -41,12 +40,11 @@ export default {
         if (response.body.status === 400) {
           this.error = response.body.msg
         } else {
+          // console.log(response.body.accountId)
+          sessionStorage.setItem('accountId', response.body.accountId)
+          sessionStorage.setItem('account', that.username)
           this.$router.push({
-            name: 'index',
-            params: {
-              account: that.username,
-              accountId: response.body.accountId
-            }
+            name: 'index'
           })
         }
       })
