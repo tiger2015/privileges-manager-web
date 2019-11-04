@@ -51,7 +51,7 @@ export default {
         position: absolute;
         margin-left: 40%;
         width: 240px;
-        height: 240px;
+        height: 280px;
         margin-top: 15%;
         background-color: deepskyblue;
     }
