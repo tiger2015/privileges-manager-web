@@ -6,10 +6,10 @@
         <br/>
         <input type="password" id="pwd" placeholder="password" v-model="password"/>
         <br/>
-
         <input type="text" placeholder="验证码" v-model="checkCode">
-        <input type="submit" value="login"/>
+        <br/>
         <label id="error">{{error}}</label>
+        <input type="submit" value="login"/>
     </form>
 </template>
 
@@ -38,13 +38,14 @@ export default {
       }
       var that = this
       this.$http.post(url, formData, config).then(function (response) {
-        if (response.body.status === '400') {
+        if (response.body.status === 400) {
           this.error = response.body.msg
         } else {
           this.$router.push({
             name: 'index',
             params: {
-              account: that.username
+              account: that.username,
+              accountId: response.body.accountId
             }
           })
         }
@@ -59,14 +60,14 @@ export default {
         position: absolute;
         margin-left: 40%;
         width: 240px;
-        height: 240px;
+        height: 280px;
         margin-top: 15%;
         background-color: deepskyblue;
     }
 
     #title {
         position: relative;
-        margin-top: 30px;
+        margin-top: 20px;
         margin-left: 40%;
         font: 20px bold;
         text-align: center;

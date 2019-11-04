@@ -8,17 +8,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: 'Login'
-    },
-    {
-      path: '/login',
       name: 'login',
       component: Login
     },
     {
       path: '/index',
       name: 'index',
-      children: Index
+      component: Index
     }
   ]
 })
