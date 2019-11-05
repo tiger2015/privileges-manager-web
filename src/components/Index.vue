@@ -10,16 +10,20 @@
     <div id="menu">
       <ul>
         <li>
-          <a href="#" target="iFrame">用户管理</a>
+          <router-link to="/accountManager">用户管理</router-link>
+          <!-- <a href="#" v->用户管理</a> -->
           <ul>
-            <li><a href="#" target="iFrame">用户查询</a></li>
+            <!-- <li><a href="#">用户查询</a></li> -->
+            <li><router-link to="/accountManager">用户查询</router-link></li>
             <li><a href="#">添加用户</a></li>
           </ul>
         </li>
         <li>
-          <a th:href="#">角色管理</a>
+          <!-- <a th:href="#">角色管理</a> -->
+          <router-link to="/roleManager">角色管理</router-link>
             <ul>
-              <li><a href="#">角色查询</a></li>
+              <!-- <li><a href="#">角色查询</a></li> -->
+               <li><router-link to="/roleManager">角色查询</router-link></li>
               <li><a href="#">添加角色</a></li>
             </ul>
         </li>
@@ -67,7 +71,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   #head {
     position: absolute;
     top: 0;
