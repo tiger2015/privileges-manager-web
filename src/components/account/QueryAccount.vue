@@ -12,7 +12,6 @@
         <table id="result">
             <thead>
                 <tr>
-                    <th></th>
                     <th>ID</th>
                     <th>账号</th>
                     <th></th>
@@ -20,8 +19,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(account, index) in accounts" v-bind:key="account.id" class="alt">
-                  <td>{{index}}</td>
+                <tr v-for="account in accounts" v-bind:key="account.id" class="alt">
                   <td>{{account.id}}</td>
                   <td>{{account.name}}</td>
                   <td>编辑</td>
@@ -29,14 +27,14 @@
                 </tr>
             </tbody>
         </table>
-        <div id="pageinfo"><input type="button" value="上一页">&nbsp;&nbsp;<input type="button" value="下一页">&nbsp;&nbsp;当前页:{{pageInfo.current}}&nbsp;总页数:{{pageInfo.total}}</div>
+        <div id="pageinfo"><input type="button" value="上一页" v-on:click="nextPage()">&nbsp;&nbsp;<input type="button" value="下一页" v-on:click="prevPage()">&nbsp;&nbsp;当前页:{{pageInfo.current}}&nbsp;总页数:{{pageInfo.total}}</div>
     </div>
   </div>
 </template>
 <script>
 export const evidenceUrl = process.env.API_ROOT
 export default {
-  name: 'accountManager',
+  name: 'queryAccount',
   data () {
     return {
       name: '',
@@ -62,11 +60,18 @@ export default {
         that.accounts = response.body.accounts
       })
     },
+    nextPage: function () {
+      this.pageInfo.current++
+      this.search()
+    },
+    prevPage: function () {
+      this.pageInfo.current--
+      this.search()
+    },
     checkAll: function () {
       console.log('check:' + this.checkedAccounts)
-      this.checkedAll = !this.checkedAll
       let that = this
-      if (this.checkedAll) {
+      if (!this.checkedAll) {
         this.checkedAccounts = []
         this.accounts.forEach(function (item) {
           that.checkedAccounts.push(item.id)
@@ -74,18 +79,19 @@ export default {
       } else {
         this.checkedAccounts = []
       }
-    },
-    watch: {
-      checkedAccounts: {
-        handler: function (val, oldVal) {
-          console.log('change')
-          if (this.accounts.length === this.checkedAccounts.length) {
-            this.checkedAll = true
-          } else {
-            this.checkedAll = false
-          }
+    }
+  },
+  watch: {
+    checkedAccounts: {
+      handler () {
+        console.log('change')
+        if (this.accounts.length === this.checkedAccounts.length) {
+          this.checkedAll = true
+        } else {
+          this.checkedAll = false
         }
-      }
+      },
+      deep: true
     }
   }
 }

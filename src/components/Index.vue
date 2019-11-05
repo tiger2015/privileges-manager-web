@@ -10,11 +10,11 @@
     <div id="menu">
       <ul>
         <li>
-          <router-link to="/accountManager">用户管理</router-link>
-          <!-- <a href="#" v->用户管理</a> -->
+          <!-- <router-link to="/accountManager">用户管理</router-link> -->
+          <a href="#">用户管理</a>
           <ul>
             <!-- <li><a href="#">用户查询</a></li> -->
-            <li><router-link to="/accountManager">用户查询</router-link></li>
+            <li><router-link to="/accountManager/queryAccount">用户查询</router-link></li>
             <li><a href="#">添加用户</a></li>
           </ul>
         </li>
@@ -30,7 +30,7 @@
         <li>
           <a href="#">权限管理</a>
             <ul>
-              <li><a href="#">权限查询</a></li>
+              <li><router-link to="/permissionManager/queryPermission">权限查询</router-link></li>
               <li><a href="#">添加权限</a></li>
             </ul>
         </li>
@@ -78,7 +78,7 @@ export default {
     width: 100%;
     margin: 1px;
     height: 100px;
-    background-color: aqua;
+    background-color:darkseagreen;
   }
   #userInfo {
     position: absolute;
@@ -136,7 +136,7 @@ export default {
     color:#000;
   }
   #menu ul li:hover ul li a:hover {
-    background-color: #dfc184;
+    background-color:forestgreen;
     color: #000;
   }
   iframe {
