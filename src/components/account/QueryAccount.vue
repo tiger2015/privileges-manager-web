@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="queryAccount">
     <div>
       <label>账号</label>
       <input type="text" id="name" v-model="name"/>
@@ -32,6 +32,7 @@
   </div>
 </template>
 <script>
+import '../../../static/css/result.css'
 export const evidenceUrl = process.env.API_ROOT
 export default {
   name: 'queryAccount',
@@ -97,33 +98,4 @@ export default {
 }
 </script>
 <style scoped>
-  #result
-  {
-    border-collapse:collapse;
-    margin-top: 5px;
-  }
-  #result td, #result th
-  {
-    font-size:1em;
-    border:1px solid #98bf21;
-    padding:3px 7px 2px 7px;
-  }
-  #result th
-  {
-    font-size:1.1em;
-    text-align:center;
-    padding-top:5px;
-    padding-bottom:4px;
-    background-color:#A7C942;
-    color:#ffffff;
-  }
-
-  #result tr.alt td
-  {
-    color:#000000;
-    background-color:#EAF2D3;
-  }
-  #pageinfo{
-    margin-top: 5px;
-  }
 </style>

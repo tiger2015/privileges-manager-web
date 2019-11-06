@@ -36,12 +36,12 @@ export default new Router({
           ]
         },
         {
-          path: '/roleManager',
+          path: 'roleManager',
           name: 'roleManager',
           component: RoleManager
         },
         {
-          path: '/permissionManager',
+          path: 'permissionManager',
           name: 'permissionManager',
           component: PermissionManager,
           children: [
