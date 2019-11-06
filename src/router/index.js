@@ -24,12 +24,12 @@ export default new Router({
       component: Index,
       children: [
         {
-          path: '/accountManager',
+          path: 'accountManager',
           name: 'accountManager',
           component: AccountManager,
           children: [
             {
-              path: '/queryAccount',
+              path: 'queryAccount',
               name: 'queryAccount',
               component: QueryAccount
             }
@@ -46,7 +46,7 @@ export default new Router({
           component: PermissionManager,
           children: [
             {
-              path: '/queryPermission',
+              path: 'queryPermission',
               name: 'queryPermission',
               component: QueryPermission
             }

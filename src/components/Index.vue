@@ -14,23 +14,23 @@
           <a href="#">用户管理</a>
           <ul>
             <!-- <li><a href="#">用户查询</a></li> -->
-            <li><router-link to="/accountManager/queryAccount">用户查询</router-link></li>
+            <li><router-link to="/index/accountManager/queryAccount">用户查询</router-link></li>
             <li><a href="#">添加用户</a></li>
           </ul>
         </li>
         <li>
           <!-- <a th:href="#">角色管理</a> -->
-          <router-link to="/roleManager">角色管理</router-link>
+          <router-link to="/index/roleManager">角色管理</router-link>
             <ul>
               <!-- <li><a href="#">角色查询</a></li> -->
-               <li><router-link to="/roleManager">角色查询</router-link></li>
+               <li><router-link to="/index/roleManager">角色查询</router-link></li>
               <li><a href="#">添加角色</a></li>
             </ul>
         </li>
         <li>
           <a href="#">权限管理</a>
             <ul>
-              <li><router-link to="/permissionManager/queryPermission">权限查询</router-link></li>
+              <li><router-link to="/index/permissionManager/queryPermission">权限查询</router-link></li>
               <li><a href="#">添加权限</a></li>
             </ul>
         </li>
