@@ -19,12 +19,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(index, permission) in permissions" v-bind:key="permission.id" class="alt">
+                <tr v-for="(permission, index) in permissions" v-bind:key="permission.id" class="alt">
                   <td>{{permission.id}}</td>
                   <td>{{permission.name}}</td>
                   <td>{{permission.url}}</td>
                   <td>{{permission.description}}</td>
-                  <td><router-link to="{path: '/index/permissionManager/updatePermission', permission:{permissions[index]}}">编辑</router-link></td>
+                  <td><a href="#" v-on:click="update(index)">编辑</a></td>
                   <td><input type="checkbox" v-bind:value="permission.id" v-model="checkedPermissions"></td>
                 </tr>
             </tbody>
@@ -56,7 +56,7 @@ export default {
       }
       var that = this
       this.$http.post(url, params, {emulateJSON: true}).then(function (response) {
-        // console.log(response)
+        console.log(response)
         if (response.ok) {
           that.permissions = response.body.permissions
           that.pageInfo = response.body.pageInfo
@@ -83,6 +83,17 @@ export default {
       } else {
         this.checkedPermissions = []
       }
+    },
+    update: function (index) {
+      console.log(index)
+      var that = this
+      // console.log(this.permissions[index])
+      this.$router.push({
+        name: 'updatePermission',
+        params: {
+          permission: that.permissions[index]
+        }
+      })
     }
   },
   watch: {

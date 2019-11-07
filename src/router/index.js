@@ -8,7 +8,7 @@ import RoleManager from '../components/role/RoleManager'
 import PermissionManager from '../components/permission/PermissionManager'
 import QueryPermission from '../components/permission/QueryPermission'
 import AddPermission from '../components/permission/AddPermission'
-
+import UpdatePermission from '../components/permission/UpdatePermission'
 Vue.use(Router)
 
 export default new Router({
@@ -55,6 +55,11 @@ export default new Router({
               path: 'addPermission',
               name: 'addPermission',
               component: AddPermission
+            },
+            {
+              path: 'updatePermission',
+              name: 'updatePermission',
+              component: UpdatePermission
             }
           ]
         }

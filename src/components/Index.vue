@@ -51,6 +51,12 @@ export default {
       permissions: ''
     }
   },
+  created: function () {
+    console.log('seesion:' + sessionStorage.getItem('account'))
+    if (sessionStorage.getItem('account') === null) {
+      this.$router.push('/')
+    }
+  },
   methods: {
     logout: function () {
       console.log('logout')
@@ -86,11 +92,12 @@ export default {
     top: 5%;
   }
   #center {
-    position: absolute;
+    position: relative;
     margin-left: 1px;
-    left: 40%;
-    top: 15%;
-    width: 90%;
+    left: 20%;
+    right: 20%;
+    top: 100px;
+    width: 60%;
     height: 300px;
   }
   .account {
@@ -103,9 +110,9 @@ export default {
     padding: 0;
   }
   #menu {
-    position: absolute;
+    /* position: relative; */
     left: 40%;
-    top: 70px;
+    top: 100px;
   }
   #menu > ul {
     background-color: #f1f1f1;
@@ -138,10 +145,5 @@ export default {
   #menu ul li:hover ul li a:hover {
     background-color:forestgreen;
     color: #000;
-  }
-  iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
   }
 </style>
