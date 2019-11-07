@@ -31,7 +31,7 @@
           <a href="#">权限管理</a>
             <ul>
               <li><router-link to="/index/permissionManager/queryPermission">权限查询</router-link></li>
-              <li><a href="#">添加权限</a></li>
+              <li><router-link to="/index/permissionManager/addPermission">添加权限</router-link></li>
             </ul>
         </li>
       </ul>

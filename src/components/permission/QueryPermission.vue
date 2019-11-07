@@ -19,12 +19,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="permission in permissions" v-bind:key="permission.id" class="alt">
+                <tr v-for="(index, permission) in permissions" v-bind:key="permission.id" class="alt">
                   <td>{{permission.id}}</td>
                   <td>{{permission.name}}</td>
                   <td>{{permission.url}}</td>
                   <td>{{permission.description}}</td>
-                  <td>编辑</td>
+                  <td><router-link to="{path: '/index/permissionManager/updatePermission', permission:{permissions[index]}}">编辑</router-link></td>
                   <td><input type="checkbox" v-bind:value="permission.id" v-model="checkedPermissions"></td>
                 </tr>
             </tbody>

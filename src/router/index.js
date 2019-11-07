@@ -7,6 +7,7 @@ import QueryAccount from '../components/account/QueryAccount'
 import RoleManager from '../components/role/RoleManager'
 import PermissionManager from '../components/permission/PermissionManager'
 import QueryPermission from '../components/permission/QueryPermission'
+import AddPermission from '../components/permission/AddPermission'
 
 Vue.use(Router)
 
@@ -49,6 +50,11 @@ export default new Router({
               path: 'queryPermission',
               name: 'queryPermission',
               component: QueryPermission
+            },
+            {
+              path: 'addPermission',
+              name: 'addPermission',
+              component: AddPermission
             }
           ]
         }
