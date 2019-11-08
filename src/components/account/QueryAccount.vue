@@ -1,12 +1,12 @@
 <template>
   <div id="queryAccount">
-    <div>
+    <div id="query">
       <label>账号</label>
       <input type="text" id="name" v-model="name"/>
       <input type="button" value="查询" id="search" v-on:click="search"/>
     </div>
-    <div v-if="accounts.length === 0">
-        no message
+    <div v-if="accounts.length === 0" id="noMessage">
+     no message
     </div>
     <div v-else>
         <table id="result">

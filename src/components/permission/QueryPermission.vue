@@ -1,6 +1,6 @@
 <template>
  <div>
-    <div>
+    <div id="query">
         名称 <input type="text" v-model="name"> <input type="button" value="查询" v-on:click="search()">
     </div>
     <div v-if="permissions.length === 0">

@@ -1,7 +1,18 @@
+#query{
+  position: absolute;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 300px;
+}
 #result
   {
     border-collapse:collapse;
-    margin-top: 5px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 40px;
+    position: absolute;
   }
   #result td, #result th
   {
@@ -25,5 +36,16 @@
     background-color:#EAF2D3;
   }
   #pageinfo{
-    margin-top: 5px;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 300px;
+  }
+  #noMessage{
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
   }

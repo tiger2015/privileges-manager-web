@@ -80,10 +80,11 @@ export default {
 <style scoped>
   #head {
     position: absolute;
-    top: 0;
-    width: 100%;
-    margin: 1px;
+    width: 80%;
     height: 100px;
+    margin: auto;
+    left: 0;
+    right: 0;
     background-color:darkseagreen;
   }
   #userInfo {
@@ -92,13 +93,13 @@ export default {
     top: 5%;
   }
   #center {
-    position: relative;
-    margin-left: 1px;
-    left: 20%;
-    right: 20%;
-    top: 100px;
+    position: absolute;
+    top: 120px;
     width: 60%;
     height: 300px;
+    margin: auto;
+    left: 0;
+    right: 0;
   }
   .account {
     font-size: 16px;
@@ -110,9 +111,13 @@ export default {
     padding: 0;
   }
   #menu {
-    /* position: relative; */
-    left: 40%;
-    top: 100px;
+    position: absolute;
+    margin: auto;
+    width: 300px;
+    top: 75px;
+    left: 0;
+    right: 0;
+    z-index: 1;
   }
   #menu > ul {
     background-color: #f1f1f1;
