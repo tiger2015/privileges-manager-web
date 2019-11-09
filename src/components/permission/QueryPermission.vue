@@ -1,13 +1,13 @@
 <template>
- <div>
-    <div id="query">
+ <div id="query">
+    <div id="queryCondition">
         名称 <input type="text" v-model="name"> <input type="button" value="查询" v-on:click="search()">
     </div>
     <div v-if="permissions.length === 0">
       no message
     </div>
-    <div v-else>
-       <table id="result">
+    <div v-else id="result">
+       <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -34,6 +34,7 @@
  </div>
 </template>
 <script>
+import '../../../static/css/result.css'
 export const evidenceUrl = process.env.API_ROOT
 export default {
   name: 'queryPermission',

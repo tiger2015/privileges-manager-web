@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div id="add">
         <form>
           <table>
             <tr>
@@ -22,6 +22,7 @@
     </div>
 </template>
 <script>
+import '../../../static/css/add.css'
 export default {
   name: 'addPermission',
   data () {

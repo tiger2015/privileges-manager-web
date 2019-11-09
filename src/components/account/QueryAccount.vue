@@ -1,6 +1,6 @@
 <template>
-  <div id="queryAccount">
-    <div id="query">
+  <div id="query">
+    <div id="queryCondition">
       <label>账号</label>
       <input type="text" id="name" v-model="name"/>
       <input type="button" value="查询" id="search" v-on:click="search"/>
@@ -8,8 +8,8 @@
     <div v-if="accounts.length === 0" id="noMessage">
      no message
     </div>
-    <div v-else>
-        <table id="result">
+    <div v-else id="result">
+        <table>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -27,7 +27,7 @@
                 </tr>
             </tbody>
         </table>
-        <div id="pageinfo"><input type="button" value="上一页" v-on:click="nextPage()">&nbsp;&nbsp;<input type="button" value="下一页" v-on:click="prevPage()">&nbsp;&nbsp;当前页:{{pageInfo.current}}&nbsp;总页数:{{pageInfo.total}}</div>
+      <div id="pageinfo"><input type="button" value="上一页" v-on:click="nextPage()">&nbsp;&nbsp;<input type="button" value="下一页" v-on:click="prevPage()">&nbsp;&nbsp;当前页:{{pageInfo.current}}&nbsp;总页数:{{pageInfo.total}}</div>
     </div>
   </div>
 </template>
