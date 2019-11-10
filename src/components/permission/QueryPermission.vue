@@ -19,12 +19,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="(permission, index) in permissions" v-bind:key="permission.id" class="alt">
+                <tr v-for="permission in permissions" v-bind:key="permission.id" class="alt">
                   <td>{{permission.id}}</td>
                   <td>{{permission.name}}</td>
                   <td>{{permission.url}}</td>
                   <td>{{permission.description}}</td>
-                  <td><a href="#" v-on:click="update(index)">编辑</a></td>
+                  <td><router-link :to="{path: '/index/permissionManager/updatePermission', query:{permissionId: permission.id}}">编辑</router-link></td>
                   <td><input type="checkbox" v-bind:value="permission.id" v-model="checkedPermissions"></td>
                 </tr>
             </tbody>
@@ -55,6 +55,8 @@ export default {
         pageNumber: this.pageInfo.current,
         pageSize: this.pageInfo.pageSize
       }
+      var search = {name: this.name, pageInfo: this.pageInfo}
+      localStorage.setItem('search', JSON.stringify(search))
       var that = this
       this.$http.post(url, params, {emulateJSON: true}).then(function (response) {
         console.log(response)
@@ -108,6 +110,18 @@ export default {
       },
       deep: true
     }
+  },
+  mounted: function () {
+    if (localStorage.getItem('search') !== undefined && localStorage.getItem('search') !== null) {
+      var search = JSON.parse(localStorage.getItem('search'))
+      console.log('get search: ' + search.name)
+      this.name = search.name
+      this.pageInfo = search.pageInfo
+      this.search()
+    }
+  },
+  destroyed: function () {
+    localStorage.removeItem('search')
   }
 }
 </script>

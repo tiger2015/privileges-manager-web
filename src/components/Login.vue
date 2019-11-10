@@ -1,9 +1,9 @@
 <template>
     <form id="login" v-on:submit.prevent="onSubmit">
         <label id="title">登录</label>
-        <input type="text" id="name" placeholder="username" v-model="username"/>
+        <input type="text" id="name" placeholder="username" v-model="username" required/>
         <br/>
-        <input type="password" id="pwd" placeholder="password" v-model="password"/>
+        <input type="password" id="pwd" placeholder="password" v-model="password" required/>
         <br/>
         <input type="text" placeholder="验证码" v-model="checkCode">
         <br/>

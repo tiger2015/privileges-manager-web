@@ -54,7 +54,8 @@ export default {
         'pageSize': this.pageInfo.pageSize,
         'pageNumber': this.pageInfo.current}
       var that = this
-
+      var search = {name: this.name, pageInfo: this.pageInfo}
+      localStorage.setItem('search', JSON.stringify(search))
       this.$http.post(url, params, {emulateJSON: true}).then(function (response) {
         console.log(response)
         that.pageInfo = response.body.pageInfo
@@ -94,6 +95,18 @@ export default {
       },
       deep: true
     }
+  },
+  mounted: function () {
+    if (localStorage.getItem('search') !== undefined) {
+      var search = JSON.parse(localStorage.getItem('search'))
+      console.log('get search: ' + search.name)
+      this.name = search.name
+      this.pageInfo = search.pageInfo
+    }
+    this.search()
+  },
+  destroyed: function () {
+    localStorage.removeItem('search')
   }
 }
 </script>

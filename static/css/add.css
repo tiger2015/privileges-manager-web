@@ -1,7 +1,13 @@
-#add form{
+#add{
     position: absolute;
     margin: 0;
     left: 0;
     right: 0;
-    width: 300px;
+}
+
+#add table {
+    position: relative;
+    margin: auto;
+    left: 0;
+    right: 0;
 }
