@@ -27,6 +27,14 @@
                   <td><router-link :to="{path: '/index/permissionManager/updatePermission', query:{permissionId: permission.id}}">编辑</router-link></td>
                   <td><input type="checkbox" v-bind:value="permission.id" v-model="checkedPermissions"></td>
                 </tr>
+                <tr>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td><input type="button" value="删除" v-on:click="del()"></td>
+                </tr>
             </tbody>
         </table>
         <div id="pageinfo"><input type="button" value="上一页" v-on:click="nextPage()">&nbsp;&nbsp;<input type="button" value="下一页" v-on:click="prevPage()">&nbsp;&nbsp;当前页:{{pageInfo.current}}&nbsp;总页数:{{pageInfo.total}}</div>
@@ -97,6 +105,18 @@ export default {
           permission: that.permissions[index]
         }
       })
+    },
+    del: function () {
+      if (this.checkedPermissions.length === 0) {
+        return
+      }
+      if (confirm('确认删除')) {
+        console.log('delete')
+        let url = evidenceUrl + '/permission/rest/deletes'
+        this.$http.post(url, {ids: this.checkedPermissions}, {emulateJSON: true}).then(function (response) {
+          this.search()
+        })
+      }
     }
   },
   watch: {

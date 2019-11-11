@@ -1,6 +1,6 @@
 <template>
     <div id="add">
-        <form>
+        <form v-on:submit.prevent="add">
           <table>
             <tr>
               <td>名称</td>
@@ -23,11 +23,21 @@
 </template>
 <script>
 import '../../../static/css/add.css'
+export const evidenceUrl = process.env.API_ROOT
 export default {
   name: 'addPermission',
   data () {
     return {
       permission: {name: '', url: '', desc: ''}
+    }
+  },
+  methods: {
+    add: function () {
+      var url = evidenceUrl + '/permission/rest/add'
+      this.$http.post(url, this.permission, {emulateJSON: true}).then(function (response) {
+        console.log(response)
+        this.$router.push({name: 'queryPermission'})
+      })
     }
   }
 }
